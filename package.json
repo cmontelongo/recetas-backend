@@ -1,0 +1,14 @@
+{
+  "name": "recetas-backend",
+  "version": "1.0.0",
+  "description": "Recetas database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CGML",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
