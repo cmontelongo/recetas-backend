@@ -50,6 +50,30 @@ function sendError(response, error) {
 
 //--------------------------------------
 
+app.get('/pacientes/', function(request, response) {
+  NoteStore.listPaciente(function(error, pacientes) {
+    if (error) {
+      sendError(error);
+    } else {
+      response.json(pacientes);
+    }
+  });
+});
+app.get('/pacientes/:pacienteId', function(request, response) {
+    console.log(request.params);
+  NoteStore.getPaciente(request.params.pacienteId, function(error, paciente) {
+      console.log(paciente);
+    if (error) {
+      sendError(error);
+    } else if (paciente) {
+      response.json(paciente);
+    } else {
+      response.status(404).send('No such note: ' + request.params.pacienteId);
+    }
+  });
+});
+
+
 app.get('/cita/', function(request, response) {
   NoteStore.list(request.user.sub.id, function(error, notes) {
     if (error) {
@@ -73,6 +97,8 @@ app.get('/cita/:citaId', function(request, response) {
 });
 
 app.post('/cita/', function(request, response) {
+    console.log(request.user);
+    console.log(request.body);
 	NoteStore.create(request.user.sub.id, request.body, function(error, citaId) {
 		if (error) {
 			console.log('ERROR');
