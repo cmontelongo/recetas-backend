@@ -73,6 +73,7 @@ app.get('/pacientes/:pacienteId', function(request, response) {
   });
 });
 
+//--------------------------------------
 
 app.get('/cita/', function(request, response) {
   NoteStore.list(request.user.sub.id, function(error, notes) {
@@ -143,6 +144,9 @@ app.delete('/cita/:citaId', function(request, response) {
   });
 });
 
+
+//--------------------------------------
+
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
@@ -151,3 +155,6 @@ app.get('/', function (req, res) {
 app.listen(8081, function () {
   console.log('Example app listening on port 8081!');
 });
+
+//--------------------------------------
+
